@@ -1,7 +1,7 @@
 '''
 ...
 '''
-from db_creation_actions_filters_1 import DB
+from tasks.db_creation_actions_filters_1 import DB as DB
 #import subprocess
 import os
 

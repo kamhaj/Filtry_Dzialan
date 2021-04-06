@@ -8,7 +8,7 @@ elementy/struktury.
 import sqlite3 as sql
 import os
 import sys
-from help_functions import get_all_files_in_path_with_given_extension
+from .help_functions import get_all_files_in_path_with_given_extension
 
 
 ## define paths for given data files
@@ -40,7 +40,7 @@ class DB():
 		return self.connection
 
 	## create Actions Filter structure (empty FTD and FTD_elementy tables) in database 
-	def run_ftd_sql_files(self):
+	def run_sql_files(self):
 		# define sql files generator and run sql commands, break if impossible (no more files)
 		sql_file_as_string_gen = self.get_single_sql_file_as_string_generator()
 		while True:
@@ -72,6 +72,3 @@ class DB():
 			yield sql_file_as_str
 
 		return 0
-
-
-
