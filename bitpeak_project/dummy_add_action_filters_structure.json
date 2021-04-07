@@ -1,0 +1,10 @@
+{
+	"nazwa": "nazwa z pliku",
+	"opis": "opis filtra z pliku",
+	"dzialania": [
+		{"id": 4702},
+        {"id": 4709},
+        {"id": 4725},
+        {"id": 5530}
+    ]
+}

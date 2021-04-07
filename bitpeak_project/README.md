@@ -25,15 +25,16 @@ writing a script to create a database based on provided .sql  (FTD structure) an
 ## Usage
 
 1. Clone repo
-2. Install requirements from a file
+2. Activate virtual environment
+3. Install requirements from a file
 ```bash
 pip install requirements.txt
 ```
-3. Run server locally 
+4. Run server locally 
 ```bash
 python manage.py runserver
 ```
-4. Access url 'localhost:8000/action_filters/programs' to list all rows from Program table (task 2)
-5. Access url 'localhost:8000/action_filters/add_filter' to add action filters structure to db (task 3). <br /> Update .json file to mock different JSON request.
-6. Access url 'localhost:8000/action_filters/update_filter' to update existing action filters structure (task 4). <br />Update .json file to mock different JSON request.
-7. REST API //TODO<br />
+5. Access url 'localhost:8000/action_filters/programs' to list all rows from Program table (task 2)
+6. Access url 'localhost:8000/action_filters/add_filter' to add action filters structure to db (task 3). <br /> Update .json file to mock different JSON request.
+7. Access url 'localhost:8000/action_filters/update_filter' to update existing action filters structure (task 4). <br />Update .json file to mock different JSON request.
+8. REST API //TODO<br />
