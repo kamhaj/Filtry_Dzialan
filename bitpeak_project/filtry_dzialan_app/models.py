@@ -27,14 +27,6 @@ class Program(models.Model):
         data = json_serializer.getvalue()
         return json_serializer.getvalue()
 
-        '''
-        try:
-            obj = Person.objects.get(first_name='John', last_name='Lennon')
-        except Person.DoesNotExist:
-            obj = Person(first_name='John', last_name='Lennon', birthday=date(1940, 10, 9))
-            obj.save()
-        '''
-
     ## get single Program table row using PK in JSON format
     def get_program_by_id(self, primary_key_id):
         ##TODO - JSON parse
