@@ -4,8 +4,9 @@ Application created to **add** and **update** action filters structures (base FT
 files FTD.sql i FTD_Elementy.sql)
 
 ## INFO
-As for ORM and REST API framework - Django was used.
-Dummy json data (for task 2 and task 3) is stored in .json files (it would be received by functions from webapplication frontend)
+As for ORM and REST API framework - Django was used. <br />
+Dummy json data (for task 2 and task 3) is stored in .json files (it would be received by functions from webapplication frontend) <br />
+As for testing framework PyTest was used  <br />
 
 ## This task was accomplished in 6 steps:
 - [x] task 1: <br />
