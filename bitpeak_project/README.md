@@ -7,6 +7,8 @@ files FTD.sql i FTD_Elementy.sql)
 As for ORM and REST API framework - Django was used. <br />
 Dummy json data (for task 2 and task 3) is stored in .json files (it would be received by functions from webapplication frontend) <br />
 As for testing framework PyTest was used  <br />
+main.py file used for ...(todo) <br />
+
 
 ## This task was accomplished in 6 steps:
 - [x] task 1: <br />
@@ -35,7 +37,16 @@ pip install requirements.txt
 ```bash
 python manage.py runserver
 ```
-5. Access url 'localhost:8000/action_filters/programs' to list all rows from Program table (task 2)
-6. Access url 'localhost:8000/action_filters/add_filter' to add action filters structure to db (task 3). <br /> Update .json file to mock different JSON request.
-7. Access url 'localhost:8000/action_filters/update_filter' to update existing action filters structure (task 4). <br />Update .json file to mock different JSON request.
-8. REST API //TODO<br />
+5. In a browswer access "http://localhost:8000/action_filters/" to see proper links to all functionalities.
+6. Access url 'localhost:8000/action_filters/programs-list/' to list all rows from Program table (task 2)
+7. Access url 'localhost:8000/action_filters/add_action_filter/' to add action filters structure to db (task 3). <br /> Update .json file to mock different JSON request.
+8. Access url 'localhost:8000/action_filters/update_action_filter/' to update existing action filters structure (task 4). <br />Update .json file to mock different JSON request.
+9. REST API //TODO<br />
+
+
+## TODO
+1. REST API add function (task 3)<br/> 
+For now, add filter link works only with JSON file dummy data (dummy_add_action_filters_structure.json).
+
+2. REST API update function (task 4) <br/> 
+For now, update filter link works only with JSON file dummy data (dummy_update_existing_action_filters_structure.json). <br/> 
