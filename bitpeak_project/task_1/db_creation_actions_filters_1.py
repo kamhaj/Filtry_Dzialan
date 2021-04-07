@@ -11,19 +11,13 @@ import sys
 from .help_functions import get_all_files_in_path_with_given_extension
 
 
-## define paths for given data files
-sql_files_directory = "../data/sql_files"
-
-## database file path
-db_file_path = '../company_database.db'
-
-
 class DB():
-	def __init__(self):
+	def __init__(self, db_file_path='company_database.sqlite3'):
 		print("DB object creation...")
+		self.db_file_path = db_file_path
 		try:
 			# connect to a database (file) and create cursor
-			self.connection  = sql.connect(db_file_path)
+			self.connection  = sql.connect(self.db_file_path)
 			self.cursor = self.connection.cursor()
 		except Exception as e:
 			print('Exception: {}'.format(e))
@@ -41,7 +35,7 @@ class DB():
 
 	## create Actions Filter structure (empty FTD and FTD_elementy tables) in database 
 	def run_sql_files(self):
-		# define sql files generator and run sql commands, break if impossible (no more files)
+        # define sql files generator and run sql commands, break if impossible (no more files)
 		sql_file_as_string_gen = self.get_single_sql_file_as_string_generator()
 		while True:
 			try: 
@@ -54,11 +48,10 @@ class DB():
 
 
 	## generator function for converting files to strings (one by one)
-	def get_single_sql_file_as_string_generator(self, folder_path=sql_files_directory):
+	def get_single_sql_file_as_string_generator(self, folder_path="data/sql_files"):
 		# get all '.sql' files in a given folder
 		sql_files = get_all_files_in_path_with_given_extension(extension='.sql', folder_path=folder_path)
-		print("SQL FILES:")
-		print(sql_files)
+
 		# exit program if no sql files were found to be run
 		if len(sql_files) == 0:
 			print("No '.sql' files found under given path")

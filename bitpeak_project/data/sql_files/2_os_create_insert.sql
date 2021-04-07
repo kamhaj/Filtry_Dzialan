@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS OS (
 	FOREIGN KEY (ID_PROGRAM) REFERENCES PROGRAM(ID_PROGRAM)	
 );
 
+/*
 INSERT INTO OS (ID_PROGRAM,NAZWA) VALUES (1,'Promotion of local culture and preservation of historical heritage (TO3)'),
 (1,'Improvement of accessibility to the regions, development of sustainable and climate-proof transport and communication networks and systems (TO7)'),
 (1,'Common challenges in the field of safety and security (TO8)'),
@@ -246,3 +247,4 @@ INSERT INTO OS (ID_PROGRAM,NAZWA) VALUES (1,'Promotion of local culture and pres
 (27,'Boosting human resource capacities for the area’s blue and green economy'),
 (27,'Increasing cooperation capacity of local actors in the South Baltic area for the blue and green growth'),
 (27,'Technical Assistance');
+*/

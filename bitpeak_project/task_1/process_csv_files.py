@@ -4,6 +4,8 @@ process CSV files:
 1. Prepare .sql files with CREATE TABLE statements based on header row
 2. Prepare .sql files with INSERT INTO statemenets based on data (row by row)
 
+3. Merge 1. and 2. files into one (by hand)
+
 '''
 import pandas as pd
 from os.path import isfile, join

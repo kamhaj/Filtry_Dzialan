@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS DZIALANIE (
 	FOREIGN KEY (ID_OS) REFERENCES OS(ID_OS)	
 );
 
-
+/*
 INSERT INTO DZIALANIE (ID_PROGRAM,ID_OS,NAZWA) VALUES (1,1,'Promotion of local culture and history'),
 (1,1,'Promotion and preservation of natural heritage'),
 (1,2,'Improvement and development of transport services and infrastructure'),
@@ -840,3 +840,4 @@ INSERT INTO DZIALANIE (ID_PROGRAM,ID_OS,NAZWA) VALUES (1,1,'Promotion of local c
 (27,238,'Increase the share of skilled labour force working in blue and green economy sectors of the South Baltic area through joint cross-border actions'),
 (27,239,'Improve the cooperation capacity of local South Baltic area actors through participation in cross-border networks'),
 (27,240,'Technical Assistance');
+*/

@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS PROGRAM (
 	CHECK(length(NAZWA) >= 3)
 );
 
-
+/*
 INSERT INTO PROGRAM (NAZWA) VALUES ('The ENI Cross-border Cooperation Programme Poland-Belarus-Ukraine 2014-2020'),
 ('The ENI Cross-border Cooperation Programme Poland-Russia 2014-2020'),
 ('Program Współpracy Interreg V-A Polska – Słowacja'),
@@ -33,3 +33,4 @@ INSERT INTO PROGRAM (NAZWA) VALUES ('The ENI Cross-border Cooperation Programme 
 ('Wielkopolski Regionalny Program Operacyjny na lata 2014 – 2020'),
 ('Regionalny Program Operacyjny Województwa Zachodniopomorskiego 2014-2020'),
 ('South Baltic Cross-border Co-operation Programme 2014-2020');
+*/
