@@ -16,8 +16,7 @@ def api_overview(request):
 		'Get program details': '/program-details/<str:pk>/',
 		'Get programs list': '/programs-list/',
 		'Create action filter structure': '/add_action_filter/',
-		'Update action filter structure': '/update_action_filter/<str:pk>/',
-		'Get action filter JSON example': '/get_ftd/<str:pk>/'
+		'Update action filter structure': '/update_action_filter/<str:pk>/'
 	}
 
 	# return API response
