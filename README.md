@@ -26,8 +26,8 @@ writing a script to create a database based on provided .sql  (FTD structure) an
 
 
 ## Where to look for task solutions:
-1. Task 1: ./task_1/process.csv.files.py (CREATE TABLE statements from .csv files) <br />
-and db_creation_actions_filters_1.py (creates company_database.sqlite3 file that is later use for Django 'inspectdb' tool to create db.sqlite3 - base project database)
+1. Task 1: ./db_creation/process.csv.files.py (CREATE TABLE statements from .csv files) <br />
+and db_creation_actions_filters.py (creates company_database.sqlite3 file that is later use for Django 'inspectdb' tool to create db.sqlite3 - base project database)
 2. Task 2: ./filtry_dzialan_app/views.py
 3. Task 3: ./filtry_dzialan_app/views.py
 4. Task 4: ./filtry_dzialan_app/views.py

@@ -7,13 +7,12 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 
 from django.db import models
-#from django.core import serializers
 from django.utils.timezone import now
 
 
 class Program(models.Model):
-    id_program = models.AutoField(primary_key=True)  # Field name made lowercase.
-    nazwa = models.CharField(db_column='NAZWA', max_length=100)  # Field name made lowercase.
+    id_program = models.AutoField(primary_key=True)
+    nazwa = models.CharField(db_column='NAZWA', max_length=100, null=False, blank=False)
 
 
     ## get single Program table row using PK in JSON format
@@ -38,7 +37,7 @@ class Program(models.Model):
 class Os(models.Model):
     id_program = models.ForeignKey('Program',  on_delete=models.DO_NOTHING, db_column='ID_PROGRAM', related_name="id_os")  # Field name made lowercase.
     id_os = models.AutoField(primary_key=True)  # Field name made lowercase.
-    nazwa = models.CharField(db_column='NAZWA', max_length=100)  # Field name made lowercase.
+    nazwa = models.CharField(db_column='NAZWA', max_length=100, null=False, blank=False)  # Field name made lowercase.
 
 
     def __str__(self):
@@ -56,7 +55,7 @@ class Dzialanie(models.Model):
     id_program = models.ForeignKey('Program', on_delete=models.DO_NOTHING, db_column='ID_PROGRAM', related_name="fk_program_dzialanie") 
     id_os = models.ForeignKey('Os', on_delete=models.DO_NOTHING, db_column='ID_OS', related_name="fk_os_dzialanie")  # Field name made lowercase.
     id_dzialanie = models.AutoField(primary_key=True)  # Field name made lowercase.
-    nazwa = models.CharField(db_column='NAZWA', max_length=100)  # Field name made lowercase.
+    nazwa = models.CharField(db_column='NAZWA', max_length=100, null=False, blank=False)  # Field name made lowercase.
 
     def __str__(self):
         return f"Dzialanie numer {self.id_dzialanie}: {self.nazwa}"
@@ -70,8 +69,8 @@ class Dzialanie(models.Model):
 
 class Ftd(models.Model):
     id_ftd = models.AutoField(primary_key=True)
-    nazwa = models.CharField(max_length=100)
-    opis = models.CharField(blank=True, null=True, max_length=300)      # it's now nullable
+    nazwa = models.CharField(max_length=100, null=False, blank=False)
+    opis = models.CharField(max_length=300, null=False, blank=False)
     data_utworzenia = models.DateField(default=now, editable=True)
 
     def __str__(self):
