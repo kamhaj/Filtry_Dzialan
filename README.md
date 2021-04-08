@@ -7,7 +7,7 @@ files FTD.sql i FTD_Elementy.sql)
 As for ORM and REST API framework - Django was used. <br />
 Dummy json data (for task 2 and task 3) is stored in .json files (it would be received by functions from webapplication frontend) <br />
 As for testing framework PyTest was used  <br />
-main.py file used for ...(todo) <br />
+main.py file used for running db creation (company_database.sqlite3 file, task 1) <br />
 
 
 ## This task was accomplished in 6 steps:
@@ -25,13 +25,14 @@ writing a script to create a database based on provided .sql  (FTD structure) an
     creating REST API for functions from previous steps (GET, POST, PUT)
 
 
-## Where to look for tasks solutions
-1. Task 1: ./task_1/db_creation_action_filters_1.py
+## Where to look for task solutions:
+1. Task 1: ./task_1/process.csv.files.py (CREATE TABLE statements from .csv files) <br />
+and db_creation_actions_filters_1.py (creates company_database.sqlite3 file that is later use for Django 'inspectdb' tool to create db.sqlite3 - base project database)
 2. Task 2: ./filtry_dzialan_app/views.py
 3. Task 3: ./filtry_dzialan_app/views.py
 4. Task 4: ./filtry_dzialan_app/views.py
-2. Task 5: ./tests/filtry_dzialan_app/
-2. Task 6: ./filtry_dzialan_app/views.py
+5. Task 5: ./tests/test_filtry_dzalan_app
+6. Task 6: ./filtry_dzialan_app/views.py (only task 2 for the moment)
 
 
 ## Usage
@@ -42,20 +43,24 @@ writing a script to create a database based on provided .sql  (FTD structure) an
 ```bash
 pip install requirements.txt
 ```
-4. Run server locally 
+4. Run server locally (from where manage.py file is)
 ```bash
 python manage.py runserver
 ```
-5. In a browswer access "http://localhost:8000/action_filters/" to see proper links to all functionalities.
-6. Access url 'localhost:8000/action_filters/programs-list/' to list all rows from Program table (task 2)
+5. In a browswer access "http://localhost:8000/action_filters/" to see proper URLs to all app functionalities.
+6. Access url 'localhost:8000/action_filters/programs-list/' to list all rows from Program table
+(task 2)
 7. Access url 'localhost:8000/action_filters/add_action_filter/' to add action filters structure to db (task 3). <br /> Update .json file to mock different JSON request.
 8. Access url 'localhost:8000/action_filters/update_action_filter/' to update existing action filters structure (task 4). <br />Update .json file to mock different JSON request.
-9. REST API //TODO<br />
+9. REST API - only for (task 2) for the moment <br />
 
 
-## TODO
+## TODO - IN PROGRESS
 1. REST API add function (task 3)<br/> 
-For now, add filter link works only with JSON file dummy data (dummy_add_action_filters_structure.json).
+For now, add filter link works only with JSON file dummy data (dummy_add_action_filters_structure.json). We can create different action filter structure by modyfing it. 
 
 2. REST API update function (task 4) <br/> 
-For now, update filter link works only with JSON file dummy data (dummy_update_existing_action_filters_structure.json). <br/> 
+For now, update filter link works only with JSON file dummy data (dummy_update_existing_action_filters_structure.json). We can update exiting action filter structure by modyfing it. Models are registered in Django Admin Panel (localhost:8000/admin) and it is an easy way to look for current
+database state <br/> 
+
+3. Create unit tests

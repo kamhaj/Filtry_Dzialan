@@ -38,7 +38,11 @@ def get_all_programs(request):
 @api_view(['GET'])
 def get_program_details(request, pk):
 	# query db and serialize data
-	programs =  Program.objects.get(id_program=pk)
+	try:
+		programs =  Program.objects.get(id_program=pk)
+	except Program.DoesNotExist:
+		return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+
 	serializer = ProgramSerializer(programs, many=False)	# many False for 1 item
 
 	# return API response
@@ -78,8 +82,14 @@ def add_action_filter_with_structure(request, json_filepath='dummy_add_action_fi
 	# iterate through dzialania ids from  JSON request, save each one to db
 	for json_dzialanie in json_request["dzialania"]:
 		id_dzialanie = json_dzialanie.get('id')
-		ftd_elementy_obj = FtdElementy.objects.create(id_ftd=Ftd.objects.get(id_ftd=ftd.pk),
-											id_dzialanie = Dzialanie.objects.get(id_dzialanie=id_dzialanie))
+
+		try:
+			ftd_obj = Ftd.objects.get(id_ftd=ftd.pk)
+			dzialanie_obj = Dzialanie.objects.get(id_dzialanie=id_dzialanie)
+		except Program.DoesNotExist:
+			return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+
+		ftd_elementy_obj = FtdElementy.objects.create(id_ftd=ftd_obj,id_dzialanie = dzialanie_obj)
 		ftd_elementy_obj.save()
 
 	return render(request, 'add_filter.html', context={'json_request': json_request})
@@ -112,7 +122,10 @@ def update_action_filter_with_structure(request, json_filepath='dummy_update_exi
 
 		# filter ftd_elementy rows with specified id_ftd and from this subset get ftd_element with given id
 		ftd_elementy_rows = FtdElementy.objects.filter(id_ftd=json_request["id_ftd"])
-		ftd_element = ftd_elementy_rows.get(id_dzialanie=id_dzialanie)
+		try:
+			ftd_element = ftd_elementy_rows.get(id_dzialanie=id_dzialanie)
+		except Program.DoesNotExist:
+			return HttpResponse(status=status.HTTP_404_NOT_FOUND)
 		ftd_element.delete()
 	
 
@@ -122,8 +135,12 @@ def update_action_filter_with_structure(request, json_filepath='dummy_update_exi
 		id_dzialanie = json_dzialanie.get('id')
 
 		# create object and save to db
-		ftd_element = FtdElementy.objects.create(id_ftd=Ftd.objects.get(id_ftd=json_request['id_ftd']),
-											id_dzialanie = Dzialanie.objects.get(id_dzialanie=id_dzialanie))
+		try:
+			ftd_obj = Ftd.objects.get(id_ftd=json_request['id_ftd'])
+			dzialanie_obj = Dzialanie.objects.get(id_dzialanie=id_dzialanie)
+		except Program.DoesNotExist:
+			return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+		ftd_element = FtdElementy.objects.create(id_ftd=ftd_obj,id_dzialanie=dzialanie_obj)
 		ftd_element.save()
 	
 
