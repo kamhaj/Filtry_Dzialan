@@ -1,32 +1,43 @@
 '''
 unit tests examples for testing models
 
-Django Tests: 	https://docs.djangoproject.com/en/3.1/topics/testing/overview/
-PyTest: 		https://dev.to/lucasmiguelmac/pytest-with-django-rest-framework-from-zero-to-hero-8c4
+testing models is basically checking if we can work with the model (CRUD operations)
 
+if some default methods (e.g. save()) were overridden, then they should be tested too
 '''
 
 from django.test import TestCase
-from filtry_dzialan_app.models import Program
+from filtry_dzialan_app.models import Program, Os, Dzialanie
 from .factories import ProgramFactory
 from model_bakery import baker
+import pytest
 
 
-class ProgramTestCase(TestCase):
-    def setUp(self):
-        # make (save to db) or prepare (do not save to db)
-        self.programs_batch = ProgramFactory.build_batch(3, nazwa="Dummy")
-        self.program = ProgramFactory.create()
-        self.program_override = ProgramFactory.create(nazwa='Moja nadpisana nazwa')
+@pytest.mark.django_db
+class TestProgramModel():   
 
-    def test_program_creation_batch(self, nazwa="Dummy"):
-        program_obj = Program.objects.filter(nazwa=nazwa)
-        self.assertEqual(len(self.programs_batch), 3)
+    def test_create_new_program(self):
+        program = ProgramFactory()
+        # Check all field and validators
+        program.clean_fields()  #  EXCLUDE: FK, O2O, M2M Fields
+        
+        # Check we can find it
+        programs = Program.objects.all()
+        assert len(programs) == 1
 
-    def test_get_progam_by_id(self, pk=1):
-        program_obj = Program.objects.get(id_program=pk)
-        self.assertEqual(program_obj.nazwa, 'Moja Test Nazwa')
+        first_program = programs[0]
+        assert first_program == program
 
-    def test_get_progam_by_id_name_override(self, pk=2):
-        program_obj = Program.objects.get(id_program=pk)
-        self.assertEqual(program_obj.nazwa, 'Moja nadpisana nazwa')
+
+    @pytest.mark.django_db
+    def test_check_attribute_in_program(self):
+        # Check attributes
+        program = ProgramFactory()
+        assert program.nazwa == 'Test Program'
+
+
+    @pytest.mark.django_db
+    def test_check_str_representation_of_program(self):
+        # Check string representation
+        program = ProgramFactory(nazwa="Moj Test Program")
+        assert program.__str__() == f'Program numer 1: Moj Test Program'
