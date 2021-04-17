@@ -65,9 +65,9 @@ python manage.py runserver
 	}
 
 ```
-<br> It creates FTD_ELEMENTY table rows. <br />
-<br> id_ftd dictionary contains data to create FTD table element (Foreign Key in FTD_ELEMENTY) <br />
-<br> id_dzialanie_list contains DZIALANIE table rows to be assigned (Foreign Keys in FTD_ELEMENTY)<br />
+* It creates FTD_ELEMENTY table rows
+* id_ftd dictionary contains data to create FTD table element (Foreign Key in FTD_ELEMENTY) 
+* id_dzialanie_list contains DZIALANIE table rows to be assigned (Foreign Keys in FTD_ELEMENTY)
 
 9. Access url 'localhost:8000/action_filters/action_filter/' + PUT to update an existing action filters structure (task 4). <br /> Provide JSON data.
 ```json
@@ -81,9 +81,9 @@ python manage.py runserver
         "id_dzialanie_list": [6669, 6670]
 	}
 ```
-<br> It updates FTD_ELEMENTY table rows. <br />
-<br> id_ftd dictionary contains data to update FTD table element (Foreign Key in FTD_ELEMENTY) <br />
-<br> id_dzialanie_list contains DZIALANIE table rows to be assigned (Foreign Keys in FTD_ELEMENTY). Any previous rows are unassigned (deleted from FTD_ELEMENTY table)<br />
+* It updates FTD_ELEMENTY table rows
+* id_ftd dictionary contains data to update FTD table element (Foreign Key in FTD_ELEMENTY) 
+* id_dzialanie_list contains DZIALANIE table rows to be assigned (Foreign Keys in FTD_ELEMENTY). Any previous rows are unassigned (deleted from FTD_ELEMENTY table)
 
 11. REST API  <br />
 12. Running tests
