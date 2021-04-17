@@ -14,20 +14,10 @@ class Program(models.Model):
     id_program = models.AutoField(primary_key=True)
     nazwa = models.CharField(db_column='NAZWA', max_length=100, null=False, blank=False)
 
-
-    ## get single Program table row using PK in JSON format
-    def get_program_by_id(self, primary_key_id):
-        ##TODO - JSON parse
-        return Program.objects.get(id_program=primary_key_id)
-
-
-    ## TODO - delete, update methods...
-
     def __str__(self):
         return f"Program numer {self.id_program}: {self.nazwa}"
 
     class Meta:
-        # add any constraints here...
         managed = True      ## to allow Django to modify table
         db_table = 'PROGRAM'
 
@@ -45,7 +35,6 @@ class Os(models.Model):
 
 
     class Meta:
-        # add any constraints here...
         managed = True      ## to allow Django to modify table
         db_table = 'OS'
               
@@ -61,7 +50,6 @@ class Dzialanie(models.Model):
         return f"Dzialanie numer {self.id_dzialanie}: {self.nazwa}"
 
     class Meta:
-        # add any constraints here...
         managed = True      ## to allow Django to modify table
         db_table = 'DZIALANIE'         
         
@@ -77,7 +65,6 @@ class Ftd(models.Model):
         return f"FTD numer {self.id_ftd}: {self.nazwa}"
 
     class Meta:
-        # add any constraints here...
         managed = True      ## to allow Django to modify table
         db_table = 'FTD'
 
@@ -93,6 +80,5 @@ class FtdElementy(models.Model):
         return f"FTD Element numer {self.id_ftd_element} ({self.id_ftd})"
 
     class Meta:
-        # add any constraints here...
         managed = True      ## to allow Django to modify table
         db_table = 'FTD_ELEMENTY'
