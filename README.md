@@ -35,7 +35,7 @@ and db_creation_actions_filters.py (creates company_database.sqlite3 file that i
 3. Task 3: ./filtry_dzialan_app/views.py 
 4. Task 4: ./filtry_dzialan_app/views.py 
 5. Task 5: ./tests/test_filtry_dzalan_app/ (folder)
-6. Task 6: ./filtry_dzialan_app/views.py
+6. Task 6: ./filtry_dzialan_app/views.py (tasks 2, 3 and 4 refactored for REST API usage)
 
 
 ## Usage
@@ -84,9 +84,8 @@ python manage.py runserver
 * It updates FTD_ELEMENTY table rows
 * id_ftd dictionary contains data to update FTD table element (Foreign Key in FTD_ELEMENTY) 
 * id_dzialanie_list contains DZIALANIE table rows to be assigned (Foreign Keys in FTD_ELEMENTY). Any previous rows are unassigned (deleted from FTD_ELEMENTY table)
-
-11. REST API  <br />
-12. Running tests
+<br />
+12. Run tests using PyTest <br />
 
 
 
