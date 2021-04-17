@@ -6,7 +6,10 @@ files FTD.sql i FTD_Elementy.sql)
 ## INFO
 As for ORM and REST API framework - Django was used. <br />
 Dummy json data (for task 2 and task 3) is stored in .json files (it would be received by functions from webapplication frontend) <br />
-As for testing framework PyTest was used  <br />
+As for testing framework PyTest was used. To run test simply run pytest command in project's root folder (CMD) <br />
+```bash
+pytest
+```
 main.py file used for running db creation (company_database.sqlite3 file, task 1) <br />
 
 
@@ -28,11 +31,11 @@ writing a script to create a database based on provided .sql  (FTD structure) an
 ## Where to look for task solutions:
 1. Task 1: ./db_creation/process.csv.files.py (CREATE TABLE statements from .csv files) <br />
 and db_creation_actions_filters.py (creates company_database.sqlite3 file that is later use for Django 'inspectdb' tool to create db.sqlite3 - base project database)
-2. Task 2: ./filtry_dzialan_app/views.py
-3. Task 3: ./filtry_dzialan_app/views.py
-4. Task 4: ./filtry_dzialan_app/views.py
-5. Task 5: ./tests/test_filtry_dzalan_app
-6. Task 6: ./filtry_dzialan_app/views.py (only task 2 for the moment)
+2. Task 2: ./filtry_dzialan_app/views.py 
+3. Task 3: ./filtry_dzialan_app/views.py 
+4. Task 4: ./filtry_dzialan_app/views.py 
+5. Task 5: ./tests/test_filtry_dzalan_app/ (folder)
+6. Task 6: ./filtry_dzialan_app/views.py
 
 
 ## Usage
@@ -50,17 +53,42 @@ python manage.py runserver
 5. In a browswer access "http://localhost:8000/action_filters/" to see proper URLs to all app functionalities.
 6. Access url 'localhost:8000/action_filters/programs-list/' to list all rows from Program table
 (task 2)
-7. Access url 'localhost:8000/action_filters/add_action_filter/' to add action filters structure to db (task 3). <br /> Update .json file to mock different JSON request.
-8. Access url 'localhost:8000/action_filters/update_action_filter/' to update existing action filters structure (task 4). <br />Update .json file to mock different JSON request.
-9. REST API - only for (task 2) for the moment <br />
+7. Access url 'localhost:8000/action_filters/action_filter/' + POST to create an action filters structure to db (task 3). <br /> Provide JSON data.
+```json
+	{        
+	    "id_ftd": 
+        {
+            "nazwa": "stworz moj nowy filtr dzialan",
+            "opis": "moj nowy filtr dzialan"
+        },
+        "id_dzialanie_list": [4709,6669, 6670, 6671]
+	}
+
+```
+<br> It creates FTD_ELEMENTY table rows. <br />
+<br> id_ftd dictionary contains data to create FTD table element (Foreign Key in FTD_ELEMENTY) <br />
+<br> id_dzialanie_list contains DZIALANIE table rows to be assigned (Foreign Keys in FTD_ELEMENTY)<br />
+
+9. Access url 'localhost:8000/action_filters/action_filter/' + PUT to update an existing action filters structure (task 4). <br /> Provide JSON data.
+```json
+	{        
+	    "id_ftd": 
+        {
+			"id_ftd": 22,
+            "nazwa": "filtr dzialan update using rest api",
+            "opis": "rest api test"
+        },
+        "id_dzialanie_list": [6669, 6670]
+	}
+```
+<br> It updates FTD_ELEMENTY table rows. <br />
+<br> id_ftd dictionary contains data to update FTD table element (Foreign Key in FTD_ELEMENTY) <br />
+<br> id_dzialanie_list contains DZIALANIE table rows to be assigned (Foreign Keys in FTD_ELEMENTY). Any previous rows are unassigned (deleted from FTD_ELEMENTY table)<br />
+
+11. REST API  <br />
+12. Running tests
+
 
 
 ## TODO - IN PROGRESS
-1. REST API add function (task 3)<br/> 
-For now, add filter link works only with JSON file dummy data (dummy_add_action_filters_structure.json). We can create different action filter structure by modyfing it. 
-
-2. REST API update function (task 4) <br/> 
-For now, update filter link works only with JSON file dummy data (dummy_update_existing_action_filters_structure.json). We can update exiting action filter structure by modyfing it. Models are registered in Django Admin Panel (localhost:8000/admin) and it is an easy way to look for current
-database state <br/> 
-
-3. Create unit tests
+1. Develop more unit tests
